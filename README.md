@@ -5,7 +5,7 @@
 
 ### Wireframes
 
-![IMG](wireframe.jpg)
+![IMG](./images/wireframe.jpg)
 
 ### Domain Modeling
 
@@ -15,5 +15,5 @@
 
 ### Database Entity-Relationship-Diagram (SQL DBs only)
 
-![IMG](db.jpg)
+![IMG](./images/db.jpg)
 
