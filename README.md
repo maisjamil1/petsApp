@@ -15,5 +15,5 @@
 
 ### Database Entity-Relationship-Diagram (SQL DBs only)
 
-![IMG](./images/db.jpg)
+![IMG](./images/db.JPG)
 
