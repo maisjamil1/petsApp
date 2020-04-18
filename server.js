@@ -28,7 +28,7 @@ app.get('/', (req, res) => {
         //     return createdPet;
         // })
         // res.send(pets);
-        res.send('hi');
+        res.json(apiData.body);
     })
     .catch((err, req, res) => console.log(err))
 })
