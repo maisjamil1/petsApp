@@ -18,6 +18,19 @@ const app = express();
 
 // const client = new pg.Client(process.env.DATABASE_URL);
 
+// app.use(express.static('./public'));
+app.use('/public', express.static('public'));
+
+
+
+app.use(express.urlencoded({ extended: true }));
+
+app.use(methodOverride('_method'));
+
+app.set('view engine', 'ejs');
+
+// 
+
 app.get('/', (req, res) => {
     const url = 'https://api.petfinder.com/v2/animals'
     superagent.get(url).set({ 'Authorization':`Bearer ${process.env.PETFINDER_API_KEY}` })
@@ -28,15 +41,108 @@ app.get('/', (req, res) => {
         //     return createdPet;
         // })
         // res.send(pets);
-        res.send('hi');
+        res.json(apiData.body);
     })
     .catch((err, req, res) => console.log(err))
 })
+//////////////////////////////// ahmad ///////////////////////////////////////////////
+
+app.get('/pets/:petsID' ,(req,res)=>{
+    const petsID = [req.params.petsID];
+    console.log('petsID',petsID);
+    const SQL = 'SELECT * FROM pets WHERE id=$1';
+    // client.query(SQL , petsID).then((petsDetails)=>{
+        // console.log(petsDetails);
+        // if(petsDetails.rows.length !== 0){
+        //     console.log('fromDataBase');
+        //     res.render('./pages/pets/show', {pet : petsDetails.rows[0]})
+
+        // } else {
+            const url = 'https://api.petfinder.com/v2/animals'
+            superagent.get(url).set({ 'Authorization':`Bearer ${process.env.PETFINDER_API_KEY}` })
+            .then((petsDetails)=>{
+                // console.log(petsDetails.body);
+                console.log('website')
+                // let pets =[];
+                // const newPets = new Pet(petsDetails.body.animals);
+                // pets.push(newPets);
+
+                res.render('./pages/pets/show' , { pet : petsDetails.body.animals })
+            // })
+        // }
+
+    }).catch((err)=> console.log(err));
+})
 
 
-function Pet (petApiData){
-    this.name = petApiData.name;
+
+
+
+
+// curl -d "grant_type=client_credentials&client_id=fEhubHznuC430W5elpJg9HgdPjRJYCpkB0iC3oM7EkxYzwsWmH&client_secret=kYipSPxEc9hKsjuUpaMUwClWGk2om5rs6aCcizLX" https://api.petfinder.com/v2/oauth2/token
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+////////////////////////////////////////////////// ahmad  ///////////////////////////////////////////
+
+function Pet(petApiData) {
+    this.pet_id = petApiData.id;
+    this.pet_type = petApiData.type;
+    this.pet_name = petApiData.name;
+    this.pet_species = petApiData.species;
+    this.pet_breed = petApiData.breeds.primary;
+    this.pet_colors = [petApiData.colors.primary, petApiData.colors.secondary, petApiData.colors.tertiary];
+    this.pet_age = petApiData.age;
+    this.pet_gender = petApiData.gender;
+    this.pet_size = petApiData.size;
+    this.pet_is_trained = petApiData.attributes.house_trained;
+    this.pet_is_vacsinated = petApiData.attributes.shots_current;
+    this.pet_description = petApiData.description;
+    this.pet_image_url = petApiData.photos[0];
+
+    this.contact_email = petApiData.contact.email;
+    this.contact_mobile = petApiData.contact.phone;
+    this.contact_city = petApiData.contact.address.city;
+    this.contact_state = petApiData.contact.address.state;
+    console.log(this);
 }
+
+// client.connect()
+//   .then(() => {
+//     app.listen(PORT, () => {
+//       console.log(`Listening on PORT ${PORT}`)
+//     })
+//   })
 
 
 app.listen(PORT, () => console.log(`We're live on port ${PORT} BB ^ o ^`));
