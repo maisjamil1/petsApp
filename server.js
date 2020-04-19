@@ -109,21 +109,6 @@ function Pet(petApiData) {
 
 
 
-// app.put('/update/:update_book', newUpdate);
-// function newUpdate (req , res){
-//   //collect
-//   let { author, title, isbn, image_url, description ,bookshelf} = req.body;
-//   //update
-  
-//   let SQL = 'UPDATE pets set pettype=$1,petbread=$2,petcolor=$3,image_url=$4,description=$5,bookshelf=$6 WHERE id=$7 ;';
-//   //safevalues
-//   let idParam = req.params.update_pet;
-//   let safeValues = [pettype,petbread,petage,petcolor,ownerName,ownerContact,location,description,idParam];
-//   client.query(SQL,safeValues)
-//     .then(()=>{
-//       res.redirect(`/pets/${idParam}`);
-//     })
-// }
 
 
 
@@ -141,36 +126,29 @@ function Pet(petApiData) {
 
 
 
+app.get('/pets/:petID', showFun);
 
 
+function showFun(req, res) {
+    let petID = req.params.petID;
+    // console.log(petID);
 
-app.post('/pets', saveToDB);
-
-function saveToDB(req, res) {
-
-  
-    let {name, type, age,image_url} = req.body;
-
-    if (req.body === 0) {
-
-        let SQL = 'INSERT INTO pets (name,type,age,image_url) VALUES ($1,$2,$3,$4);';
-        let safeValues = [name,type,age,image_url];
-        // let safetitle =[title2];
-        const SQL2 = 'SELECT * FROM pets WHERE name =$1;';
-      
-        client.query(SQL, safeValues)
-          .then(() => {
-          })
-          return client.query(SQL2,safetitle)
-            .then(result => {
-              // console.log(result.rows[0].id);
-              ln=result.rows[0].id;
-              res.redirect(`/books/${ln}`);
-            })
-    }
-}
-    // console.log(req.body);
-  
+    let sql = `SELECT * FROM pets WHERE petID = $1;`
+    client.query(sql,[petID])
+      .then(result=>{
+    if (result.rows !== 0 ){
+        res.render('./adopted/show', { data: result.rows[0] });
+    }else {  
+        const url = `https://api.petfinder.com/v2/animals/${petID}`;
+        superagent.get(url)
+        .then(result => {
+            res.render('./adopted/show', { data: result.body });
+            console.log(result.body);
+            
+        });
+  }
+})
+}  
   
 
 
