@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search</title>
+</head>
+<body>
+    <form action="/searches/" method="POST">
+        <input type="text" name="location" id="keyword" placeholder="Enter a city" required>
+        <br>
+        <label >
+            <span>Type</span>
+            <select name="type" id="">
+                <option value="cat">Cats</option>
+                <option value="dog">Dogs</option>
+                <option value="rabbit">Rabbits</option>
+            </select>
+        </label>
+        <br>
+        <label >
+            <span>Male</span>
+            <input type="radio" name="gender" value="male" id="cat">
+        </label>
+        <label >
+            <span>Female</span>
+            <input type="radio" name="gender" value="female" id="dog" >
+        </label>
+        <br>
+        <input type="submit" value="Find a Purrfect Match">    
+    </form>
+</body>
+</html>

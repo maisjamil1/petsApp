@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Le-Petit</title>
+</head>
+
+<body>
+    <% pets.forEach(pet => { %>
+    <div>
+        <img src="<%= pet.pet_image_url.medium %>" alt="<%= pet.pet_species %>">
+        <h3> <%= pet.pet_name %> </h3>
+        <h4> <%= pet.pet_type %> </h4>
+        <h4> <%= pet.pet_breed %> </h4>
+        <p> <%= pet.pet_description %> </p>
+    </div>
+    <% }) %>
+</body>
+
+</html>
