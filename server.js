@@ -43,7 +43,7 @@ app.post('/searches/', searchResults);
 
 /////////////// Tommalieh ///////////////////////////////////////////////////
 
-function homePage(req, res){
+function homePage(req, res) {
 
     const url = 'https://api.petfinder.com/v2/animals'
     superagent.get(url).set({ 'Authorization': `Bearer ${process.env.PETFINDER_API_KEY}` })
@@ -53,29 +53,29 @@ function homePage(req, res){
             pet.forEach(petData => {
                 // console.log(petData.photos.length)
                 if (petData.photos.length !== 0) {
-                console.log('>0')
-                const createdPet = new Pet(petData);
-                pets.push(createdPet);
+                    console.log('>0')
+                    const createdPet = new Pet(petData);
+                    pets.push(createdPet);
                 }
                 else {
-                console.log('0')
+                    console.log('0')
                     '';
                 }
             })
             // res.send(pets);
             // res.json(apiData.body); 
             console.log(pets[0])
-            res.render('./pages/index', { pets: pets })
+            res.render('./pages/index' , { pets: pets })
         })
         .catch((err, req, res) => console.log(err))
 };
 
-function searchPage(req, res){
+function searchPage(req, res) {
     res.render('./pages/searches/new');
 };
 
 
-function searchResults(req, res){
+function searchResults(req, res) {
     const location = req.body.location;
     const type = req.body.type;
     const gender = req.body.gender;
@@ -88,12 +88,12 @@ function searchResults(req, res){
             pet.forEach(petData => {
                 // console.log(petData.photos.length)
                 if (petData.photos.length !== 0) {
-                console.log('>0')
-                const createdPet = new Pet(petData);
-                pets.push(createdPet);
+                    console.log('>0')
+                    const createdPet = new Pet(petData);
+                    pets.push(createdPet);
                 }
                 else {
-                console.log('0')
+                    console.log('0')
                     '';
                 }
             })
@@ -107,61 +107,66 @@ function searchResults(req, res){
 
 //////////////////////////////// Ahmad ///////////////////////////////////////////////
 
-app.get('/pets/:petsID' ,(req,res)=>{
-    const petsID = [req.params.petsID];
-    console.log('petsID',petsID);
-    const SQL = 'SELECT * FROM pets WHERE id=$1';
+app.get('/pets/:petsID', (req, res) => {
+    // const petsID = [req.params.petsID];
+    // console.log('petsID', petsID);
+    // const SQL = 'SELECT * FROM pets WHERE id=$1';
     // client.query(SQL , petsID).then((petsDetails)=>{
-        // console.log(petsDetails);
-        // if(petsDetails.rows.length !== 0){
-        //     console.log('fromDataBase');
-        //     res.render('./pages/pets/show', {pet : petsDetails.rows[0]})
+    // console.log(petsDetails);
+    // if(petsDetails.rows.length !== 0){
+    //     console.log('fromDataBase');
+    //     res.render('./pages/pets/show', {pet : petsDetails.rows[0]})
 
-        // } else {
-            const url = 'https://api.petfinder.com/v2/animals'
-            superagent.get(url).set({ 'Authorization':`Bearer ${process.env.PETFINDER_API_KEY}` })
-            .then((petsDetails)=>{
-                // console.log(petsDetails.body);
-                console.log('website')
-                // let pets =[];
-                // const newPets = new Pet(petsDetails.body.animals);
-                // pets.push(newPets);
-
-                res.render('./pages/pets/show' , { pet : petsDetails.body.animals })
-            // })
-        // }
-
-    }).catch((err)=> console.log(err));
+    // } else {
+        console.log('500')
+    const url = 'https://api.petfinder.com/v2/animals'
+    superagent.get(url).set({ 'Authorization': `Bearer ${process.env.PETFINDER_API_KEY}` })
+        .then((petsData) => {
+            console.log('welcome',100);    
+            const pet = petsData.body.animals;
+            let petDetail = [];
+            pet.forEach(petData => {
+                if (petData.photos.length !== 0) {
+                    console.log('more than 0')
+                    const dataPets = new Pet(petData);
+                    petDetail.push(dataPets);
+                } else {
+                    console.log('0 length')
+                }
+            })
+            // res.send(petDetail);
+            res.render('./pages/pets/show', { pets: petDetail })
+        }).catch((err) => console.log(err));
 })
 
 
-app.get('/pets/:petID', showFun);
+// app.get('/pets/:petID', showFun);
 
-function showFun(req, res) {
-    let petID = req.params.petID;
-    // console.log(petID);
+// function showFun(req, res) {
+//     let petID = req.params.petID;
+//     // console.log(petID);
 
-    let sql = `SELECT * FROM pets WHERE petID = $1;`
-    client.query(sql,[petID])
-      .then(result=>{
-    if (result.rows !== 0 ){
-        res.render('./adopted/show', { data: result.rows[0] });
-    }else {  
-        const url = `https://api.petfinder.com/v2/animals/${petID}`;
-        superagent.get(url)
-        .then(result => {
-            res.render('./adopted/show', { data: result.body });
-            console.log(result.body);
-            
-        });
-  }
-})
-}  
+//     let sql = `SELECT * FROM pets WHERE petID = $1;`
+//     client.query(sql,[petID])
+//       .then(result=>{
+//     if (result.rows !== 0 ){
+//         res.render('./adopted/show', { data: result.rows[0] });
+//     }else {  
+//         const url = `https://api.petfinder.com/v2/animals/${petID}`;
+//         superagent.get(url)
+//         .then(result => {
+//             res.render('./adopted/show', { data: result.body });
+//             console.log(result.body);
+
+//         });
+//   }
+// })
+// }  
 
 
 ////////////////////////////////// Ahmad /////////////////////////////////////////
 
-// curl -d "grant_type=client_credentials&client_id=fEhubHznuC430W5elpJg9HgdPjRJYCpkB0iC3oM7EkxYzwsWmH&client_secret=kYipSPxEc9hKsjuUpaMUwClWGk2om5rs6aCcizLX" https://api.petfinder.com/v2/oauth2/token
+// curl -d "grant_type=client_credentials&client_id=fEhubHznuC430W5elpJg9HgdPjRJYCpkB0iC3oM7EkxYzwsWmH&client_secret=LhO5wHa6hczad8eIGzqXuenXFWAu7ZFZx71noRWE" https://api.petfinder.com/v2/oauth2/token
 
 ////////////////////////////////////////////////// ahmad  ///////////////////////////////////////////
 
@@ -188,10 +193,10 @@ function Pet(petApiData) {
 
 app.listen(PORT, () => console.log(`We're live on port ${PORT} BB ^ o ^`));
 
-  
+
 // client.connect()
 //     .then(() => {
-      
+
 //         app.listen(PORT, () => console.log(`We're live on port ${PORT} BB ^ o ^`));
 //       })
 
