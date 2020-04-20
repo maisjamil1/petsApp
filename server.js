@@ -1,3 +1,4 @@
+
 'use strict'
 
 require('dotenv').config();
@@ -18,10 +19,7 @@ const app = express();
 
 // const client = new pg.Client(process.env.DATABASE_URL);
 
-// app.use(express.static('./public'));
 app.use('/public', express.static('public'));
-
-
 
 app.use(express.urlencoded({ extended: true }));
 
@@ -29,23 +27,80 @@ app.use(methodOverride('_method'));
 
 app.set('view engine', 'ejs');
 
-// 
 
-app.get('/', (req, res) => {
+app.get('/', homePage);
+app.get('/searches/new', searchPage);
+app.post('/searches/', searchResults);
+
+
+/////////////// Tommalieh ///////////////////////////////////////////////////
+
+function homePage(req, res){
+
     const url = 'https://api.petfinder.com/v2/animals'
-    superagent.get(url).set({ 'Authorization':`Bearer ${process.env.PETFINDER_API_KEY}` })
-    .then(apiData => {
-        // const pet = apiData.body.animals;
-        // let pets = pet.map(pet => {
-        //     const createdPet = new Pet(pet);
-        //     return createdPet;
-        // })
-        // res.send(pets);
-        res.json(apiData.body);
-    })
-    .catch((err, req, res) => console.log(err))
-})
-//////////////////////////////// ahmad ///////////////////////////////////////////////
+    superagent.get(url).set({ 'Authorization': `Bearer ${process.env.PETFINDER_API_KEY}` })
+        .then(apiData => {
+            const pet = apiData.body.animals;
+            let pets = [];
+            pet.forEach(petData => {
+                // console.log(petData.photos.length)
+                if (petData.photos.length !== 0) {
+                console.log('>0')
+                const createdPet = new Pet(petData);
+                pets.push(createdPet);
+                }
+                else {
+                console.log('0')
+                    '';
+                }
+            })
+            // res.send(pets);
+            // res.json(apiData.body); 
+            console.log(pets[0])
+            res.render('./pages/index', { pets: pets })
+        })
+        .catch((err, req, res) => console.log(err))
+};
+
+function searchPage(req, res){
+    res.render('./pages/searches/new');
+};
+
+
+
+function searchResults(req, res){
+    const location = req.body.location;
+    const type = req.body.type;
+    const gender = req.body.gender;
+    const url = `https://api.petfinder.com/v2/animals?location=${location}&type=${type}&gender=${gender ? gender : ''}`
+    superagent.get(url).set({ 'Authorization': `Bearer ${process.env.PETFINDER_API_KEY}` })
+        .then(apiData => {
+            console.log(apiData.body)
+            const pet = apiData.body.animals;
+            let pets = [];
+            pet.forEach(petData => {
+                // console.log(petData.photos.length)
+                if (petData.photos.length !== 0) {
+                console.log('>0')
+                const createdPet = new Pet(petData);
+                pets.push(createdPet);
+                }
+                else {
+                console.log('0')
+                    '';
+                }
+            })
+            // res.send(pets);
+            // res.json(apiData.body); 
+            // console.log(pets[0])
+            res.render('./pages/searches/show', { pets: pets })
+        })
+        .catch((err, req, res) => console.log(err))
+};
+
+
+
+//////////////////////////////// Ahmad ///////////////////////////////////////////////
 
 app.get('/pets/:petsID' ,(req,res)=>{
     const petsID = [req.params.petsID];
@@ -75,7 +130,7 @@ app.get('/pets/:petsID' ,(req,res)=>{
 })
 
 
-
+////////////////////////////////// Ahmad /////////////////////////////////////////
 
 
 
@@ -129,7 +184,6 @@ function Pet(petApiData) {
     this.pet_is_vacsinated = petApiData.attributes.shots_current;
     this.pet_description = petApiData.description;
     this.pet_image_url = petApiData.photos[0];
-
     this.contact_email = petApiData.contact.email;
     this.contact_mobile = petApiData.contact.phone;
     this.contact_city = petApiData.contact.address.city;
@@ -146,3 +200,5 @@ function Pet(petApiData) {
 
 
 app.listen(PORT, () => console.log(`We're live on port ${PORT} BB ^ o ^`));
+
+/////////////// Tommalieh ///////////////////////////////////////////////////     
