@@ -23,19 +23,21 @@
     <main>
 
         <section id="hikealong">
+            <h2 class="urbest">Your best friend is waiting for you...</h2>
+
             <div class="fadetext">
-                
                     
                     <img src="<%= pet.pet_image_url.medium %>" alt="<%= pet.pet_species %>">
                 
           
                 <p><span>Name:</span> <%= pet.pet_name %> </p>
-                <br>
+                
                 <p><span>Type:</span> <%= pet.pet_type %> </p>
-                <br>
+                
                 <p><span>Breed:</span> <%= pet.pet_breed %> </p>
-                <br>
+              
                 <p><span>Description:</span> <%= pet.pet_description %> </p>
+               
                 <% if (!pet.id) { %>
                 <form action="/pets/" method="POST">
                     <input type="hidden" name="petID" value="<%= pet.pet_id %>">

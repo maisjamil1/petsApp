@@ -1,5 +1,5 @@
 
-// curl -d "grant_type=client_credentials&client_id=8CkHxCo6UyK3VArr3OYiNyjbgxIDxNnnTBtkeBlQUDukRHWL3M&client_secret=z7yYdStpVVn2cfjDGTZWKowZPCvG8LZKj77Pvvup" https://api.petfinder.com/v2/oauth2/token
+// curl -d "grant_type=client_credentials&client_id=8CkHxCo6UyK3VArr3OYiNyjbgxIDxNnnTBtkeBlQUDukRHWL3M&client_secret=MUzz7c0B2ckRIWBkH0iqdVkRDqyigYA8XM3Rn2Zu" https://api.petfinder.com/v2/oauth2/token
 
 'use strict'
 

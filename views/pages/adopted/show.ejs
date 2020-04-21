@@ -4,17 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To Adopt</title>
+    <link rel="stylesheet" href="../../../public/styles/base.css">
 </head>
 <body>
+    <header>
+        <h2 id="DD">To Adopt list</h2>
+
+        <ul>
+            <li class="link"><a href="/">Home</a></li>
+            <li class="link"><a href="/searches/new">Search Page</a></li>
+        </ul>
+    </header>
+    <section id="hikealong">
+    <h2>hi</h2>
     <% pets.forEach(pet => { %>
-        <div>
+        <div class="fadetext">
             <img src="<%= pet.pet_image_url.medium %>" alt="<%= pet.pet_species %>">
             <h3> <%= pet.pet_name %> </h3>
             <h4> <%= pet.pet_type %> </h4>
             <h4> <%= pet.pet_breed %> </h4>
             <p> <%= pet.pet_description %> </p>
-            <a href="/pets/<%= pet.pet_id %>"><button>View Details</button></a>
+            <a href="/pets/<%= pet.pet_id %>"><button class="myButton">View Details</button></a>
         </div>
         <% }) %>
+    </section>
+    <footer>
+        <h4>All Rights reserved.Le Petit © 2020 </h4>
+    </footer>
 </body>
 </html>
