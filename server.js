@@ -243,4 +243,35 @@ client.connect()
     })
     .catch(err => console.log(err))
 
-/////////////// Tommalieh ///////////////////////////////////////////////////     
+/////////////// Tommalieh ///////////////////////////////////////////////////  
+
+
+
+
+
+
+
+
+
+
+//////////////thaer////////
+app.post('/pets', saveToDB);
+
+function saveToDB(req, res) {
+  
+    let { pet_name, pet_type, pet_age, pet_colors, contact_email ,pet_image_url,contact_city,pet_description} = req.body;
+    // console.log(req.body);
+    let SQL = 'INSERT INTO books (pet_name, pet_type, pet_age, pet_colors, contact_email ,pet_image_url,contact_city,pet_description) VALUES ($1,$2,$3,$4,$5,$6,$7,$8);';
+    let safeValues = [ pet_name, pet_type, pet_age, pet_colors, contact_email ,pet_image_url,contact_city,pet_description];
+  
+    // const SQL2 = 'SELECT * FROM pets WHERE title =$1;';
+  
+    client.query(SQL, safeValues)
+      .then((result) => {
+        //   result.rows[0].id;
+          res.redirect(`/pets`);
+      })
+  
+    
+      
+  }
