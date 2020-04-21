@@ -68,7 +68,7 @@ function homePage(req, res) {
             // res.send(pets);
             // res.json(apiData.body); 
             console.log(pets[0])
-            res.render('./pages/index', { pets: pets })
+            res.render('./pages/index' , { pets: pets })
         })
         .catch((err, req, res) => console.log(err))
 };
@@ -109,7 +109,6 @@ function searchResults(req, res) {
 };
 
 //////////////////////////////// Ahmad ///////////////////////////////////////////////
-
 
 function showPetDetails(req, res) {
     const petID = [req.params.petID];
@@ -240,7 +239,6 @@ function Pet(petApiData) {
 
 client.connect()
     .then(() => {
-
         app.listen(PORT, () => console.log(`We're live on port ${PORT} BB ^ o ^`));
     })
     .catch(err => console.log(err))
