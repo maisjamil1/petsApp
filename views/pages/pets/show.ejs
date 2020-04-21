@@ -20,13 +20,19 @@
 <main>
     
     <section>
-        
-        <h2 class="H2">Nmae : <%=pets[0].pet_name%></h2>
-        <h2 class="H2">Age : <%=pets[0].pet_age%></h2>
-        <h2 class="H2">Gender : <%=pets[0].pet_gender%></h2>
-        <p id="P2">Description : <%=pets[0].pet_description%></p>
-        <img id="imgD" src="<%=pets[0].pet_image_url.medium%>">
-        
+        <div>
+            <img src="<%= pet.pet_image_url.medium %>" alt="<%= pet.pet_species %>">
+            <h3> <%= pet.pet_name %> </h3>
+            <h4> <%= pet.pet_type %> </h4>
+            <h4> <%= pet.pet_breed %> </h4>
+            <p> <%= pet.pet_description %> </p>
+            <% if (!pet.id) { %>
+            <form action="/pets/" method="POST">
+            <input type="hidden" name="petID" value="<%= pet.pet_id %>">
+            <button type="submit">Adopt</button>
+            </form>
+            <% } %>
+        </div>
     </section>
     
 </main>
