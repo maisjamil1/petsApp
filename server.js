@@ -108,6 +108,9 @@ function searchResults(req, res) {
         .catch((err, req, res) => console.log(err))
 };
 
+/////////////// Tommalieh ///////////////////////////////////////////////////  
+
+
 //////////////////////////////// Ahmad ///////////////////////////////////////////////
 
 function showPetDetails(req, res) {
@@ -135,7 +138,10 @@ function showPetDetails(req, res) {
         .catch((err, req, res) => console.log(err))
 }
 
+////////////////////////////////// Ahmad /////////////////////////////////////////
 
+
+///////////////////////////Thaer//////////////////////////////////////////////
 
 function addPetToAdopted(req, res) {
     const petID = req.body.petID;
@@ -173,6 +179,8 @@ function addPetToAdopted(req, res) {
     })
 }
 
+///////////////////////////////////Thaer/////////////////////////////////////////
+
 
 function showAdoptedPets(req, res) {
     const SQL = 'SELECT * FROM pets '
@@ -183,35 +191,9 @@ function showAdoptedPets(req, res) {
 }
 
 
-// app.get('/pets/:petID', showFun);
-
-// function showFun(req, res) {
-//     let petID = req.params.petID;
-//     // console.log(petID);
-
-//     let sql = `SELECT * FROM pets WHERE petID = $1;`
-//     client.query(sql,[petID])
-//       .then(result=>{
-//     if (result.rows !== 0 ){
-//         res.render('./adopted/show', { data: result.rows[0] });
-//     }else {  
-//         const url = `https://api.petfinder.com/v2/animals/${petID}`;
-//         superagent.get(url)
-//         .then(result => {
-//             res.render('./adopted/show', { data: result.body });
-//             console.log(result.body);
-
-//         });
-//   }
-// })
-// }  
-
-
-////////////////////////////////// Ahmad /////////////////////////////////////////
-
 // curl -d "grant_type=client_credentials&client_id=ETHzj63pOADq1dtarMeN88FtVGQZsVkiqAH46NYLTdNLRjrDF8&client_secret=b0i0M466DoJHGvZRCok92uRmOxNwvXkOVa9wUJIj" https://api.petfinder.com/v2/oauth2/token
 
-///////////////////////////////// Ahmad  /////////////////////////////////////////
+/////////////// Tommalieh ///////////////////////////////////////////////////  
 
 function Pet(petApiData) {
     this.pet_id = petApiData.id;
@@ -245,33 +227,3 @@ client.connect()
 
 /////////////// Tommalieh ///////////////////////////////////////////////////  
 
-
-
-
-
-
-
-
-
-
-//////////////thaer////////
-app.post('/pets', saveToDB);
-
-function saveToDB(req, res) {
-  
-    let { pet_name, pet_type, pet_age, pet_colors, contact_email ,pet_image_url,contact_city,pet_description} = req.body;
-    // console.log(req.body);
-    let SQL = 'INSERT INTO books (pet_name, pet_type, pet_age, pet_colors, contact_email ,pet_image_url,contact_city,pet_description) VALUES ($1,$2,$3,$4,$5,$6,$7,$8);';
-    let safeValues = [ pet_name, pet_type, pet_age, pet_colors, contact_email ,pet_image_url,contact_city,pet_description];
-  
-    // const SQL2 = 'SELECT * FROM pets WHERE title =$1;';
-  
-    client.query(SQL, safeValues)
-      .then((result) => {
-        //   result.rows[0].id;
-          res.redirect(`/pets`);
-      })
-  
-    
-      
-  }
