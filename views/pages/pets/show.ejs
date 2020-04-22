@@ -27,20 +27,20 @@
 
     <main>
 
-        <section id="hikealong">
-            <h2 class="urbest">Your best friend is waiting for you...</h2>
+        <section id="grid-elm">
+            <!-- <h2 class="urbest">Your best friend is waiting for you...</h2> -->
 
-            <div class="fadetext">
+            <div class="ele card">
                     
                     <img src="<%= pet.pet_image_url.medium %>" alt="<%= pet.pet_species %>">
                 
           
-                <p><span>Name:</span> <%= pet.pet_name %> </p>
-                
-                <p><span>Type:</span> <%= pet.pet_type %> </p>
-                
-                <p><span>Breed:</span> <%= pet.pet_breed %> </p>
-              
+                <h3><span>Name:</span> <%= pet.pet_name %> </h3>
+                <hr>
+                <h4><span>Type:</span> <%= pet.pet_type %> </h4>
+                <hr>
+                <h4><span>Breed:</span> <%= pet.pet_breed %> </h4>
+                <hr>
                 <p><span>Description:</span> <%= pet.pet_description %> </p>
                
                 <% if (!pet.id) { %>
