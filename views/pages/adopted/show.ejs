@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To Adopt</title>
     <link rel="stylesheet" href="../../../public/styles/toAdoptPage.css">
 </head>
+
 <body>
     <header>
         <h2 id="DD">Adoption list</h2>
@@ -23,6 +25,8 @@
     <section id="Con">
     
     <% pets.forEach(pet => { %>
+    
+    ////////////mais///////////////////
         <div class="fadetext item" >
             <img src="<%= pet.pet_image_url.medium %>" alt="<%= pet.pet_species %>">
             <section class="center">
@@ -39,6 +43,33 @@
     <footer>
         <h4>All Rights reserved.Le Petit © 2020 </h4>
     </footer>
+
+////////////mais//////////////////////
+
+    <div>
+        <img src="<%= pet.pet_image_url.medium %>" alt="<%= pet.pet_species %>">
+        <h3> <%= pet.pet_name %> </h3>
+        <h4> <%= pet.pet_type %> </h4>
+        <h4> <%= pet.pet_breed %> </h4>
+        <p> <%= pet.pet_description %> </p> 
+        <% if (!pet.pet_comments) { %>
+        <span></span>
+        <% } else { %>
+        <p> <%= pet.pet_comments %> </p>
+        <% } %>
+        <button>Comment</button>
+        <form action="/delete/<%=pet.pet_id%>?_method=DELETE" method="POST">
+            <button type="submit">Remove Pet</button>
+        </form>
+        <form action="/addnote/<%= pet.pet_id %>?_method=PUT" method="POST">
+            <textarea name="pet_comments" id="comment" cols="30" rows="10"
+                placeholder="Tell the owner something..."></textarea>
+            <button type="submit">Add Comment</button>
+        </form>
+
+    </div>
+    <% }) %>
+/////////////////tommalieh/////////////////
 </body>
 
 </html>
