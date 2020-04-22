@@ -12,29 +12,39 @@
 
     <header>
         <nav>
+
             <img id="logo" src="../../public/images/logo.png" alt="">
             <ul>
-            <li><span>A</span>dopted <span>P</span>ets</li>
-            <li><span>A</span>bout <span>U</span>s</li>
+            <li><a href="/searches/new"><span>S</span>earch</a></li>
+            <li><a href="/adoptedpets/"><span>A</span>dopted <span>P</span>ets</a>></li>
             </ul>
+
         </nav>
 
         <div>
-            <h2>Find the Purrfect Match</h2>
-            <!-- <p>A New Best Friend Is Waiting For You</p> -->
-            <a href="/searches/new" class="myButton">Search</a>
+            <h2>Matched</h2>
         </div>
     </header>
 
-    <% pets.forEach(pet => { %>
-        <div>
+    <main>
+
+        <section id="grid-elm">
+
+        <% pets.forEach(pet => { %>
+        <div class="ele card">
             <img src="<%= pet.pet_image_url.medium %>" alt="<%= pet.pet_species %>">
-            <h3>hhhh <%= pet.pet_name %> </h3>
+            <h3> <%= pet.pet_name %> </h3>
+            <hr>
             <h4> <%= pet.pet_type %> </h4>
+            <hr>
             <h4> <%= pet.pet_breed %> </h4>
-            <p> <%= pet.pet_description %> </p>
-            <a href="/pets/<%= pet.pet_id %>"><button>View Details</button></a>
+            <hr>
+            <a href="/pets/<%= pet.pet_id %>" class="myButton">View Details</a>
         </div>
         <% }) %>
+
+    </section>
+
+    </main>
 </body>
 </html>
