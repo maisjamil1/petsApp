@@ -2,28 +2,18 @@
 
 
 #Con{
+
     display: grid;
     grid-template-columns: repeat(auto-fill , minmax(300px, 1fr));
     grid-gap: 100px;
     padding: 100px 100px;
-
-
-
     /* background-image: url(./41823.jpg); */
     background-image: url(./41759.jpg);
     background-size: cover;
-    
     background-position: center center;
     overflow: hidden;
-    
-   
 
 }
-
-  
-
-   
-    
 
   
 .item {

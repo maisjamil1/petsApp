@@ -19,8 +19,6 @@ header{
     font-family: sans-serif;
     box-shadow: 0px 0px 10px white;
     box-shadow: 0px 145px 165px white;
-
-
 }
 
 header nav{
@@ -147,6 +145,7 @@ height: 40vh;
     position: relative;
     margin: 5em auto;
     box-shadow: 4px 4px 15px #322d2d;
+    padding-top: 3%;
     
   } 
   .ele img{
@@ -173,8 +172,16 @@ height: 40vh;
     box-shadow: 4px 4px 15px #322d2d;
     text-align: center;
     z-index: 9999;
+    height: fit-content;
+    font-family: 'Pacifico', cursive;
+    color: black;
     
   }
+
+  .card span{
+    color: #ff5c5c;
+  }
+
   .card:before,
   .card:after
   {
@@ -194,6 +201,10 @@ height: 40vh;
   .card:hover{
   /* background: #d3bebe8f; */
   box-shadow: 0px 0px 5px black;
+  }
+
+  .card:hover span{
+    color: red;
   }
 
   .card:hover:before{
@@ -241,10 +252,12 @@ height: 40vh;
     font-size: 175%;
     color: #242626;
     text-transform: uppercase;
+    padding: 2% 0;
   }
 
   .card h4{
       font-size: 150%;
+      padding: 2% 0;
   }
 
   .card h4, .card p{
@@ -253,7 +266,17 @@ height: 40vh;
 
   .card p{
       height: 5vh;
-    overflow-y: scroll;
+    /* overflow-y: scroll; */
+      width: 300px;
+      line-height: 30px;
+      padding: 1% 13px 31% 13px;
+      font-size: x-large;
+      
+  }
+
+  .card a, .card button{
+    margin-bottom: 5%;
+
   }
 
   .myButton{
@@ -298,3 +321,18 @@ height: 40vh;
   position: relative;;
   top:1px;
   }  */
+
+
+  #gifcontainer{
+    box-shadow: 0px 145px 50px white;
+    background: white;
+    margin-bottom: 10%;
+  }
+
+  #imggif{
+    background-image: url(/public/styles/source2.gif);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 40vh;
+    background-attachment: fixed;
+  }
