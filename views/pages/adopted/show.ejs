@@ -64,9 +64,22 @@
                 <h4> <span>Contact Mobile: </span><%= pet.contact_mobile %> </h4>
                 <hr>
                 <% }%>
+                <% if (!pet.pet_comments) { %>
+                <span></span>
+                <% } else{ %>
+                <h4> <span style="color: blue;">You Commented: </span><%= pet.pet_comments %> </h4>
+                <% }%>
+
+
 
                 <form action="/delete/<%=pet.pet_id%>?_method=DELETE" method="POST">
                     <button type="submit" class="myButton">Remove Pet</button>
+                </form>
+
+                <form action="/addnote/<%= pet.pet_id %>?_method=PUT" method="POST" id="commentForm">
+                    <textarea name="pet_comments" id="comment" cols="30" rows="10"
+                        placeholder="Tell the owner something..."></textarea>
+                    <button type="submit" class="myButton">Add Comment</button>
                 </form>
             </div>
             <% }) %>

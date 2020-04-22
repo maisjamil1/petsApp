@@ -372,4 +372,10 @@ height: 40vh;
     height: 40vh;
     background-attachment: fixed;
   }
+
+  #commentForm{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
  
