@@ -220,7 +220,7 @@ function deletePet(req, res){
     })
 }
 
-// curl -d "grant_type=client_credentials&client_id=ETHzj63pOADq1dtarMeN88FtVGQZsVkiqAH46NYLTdNLRjrDF8&client_secret=SyEb2AutRVWTM6TGJXzrHRnOZysj2dX2UdK4ce4Y" https://api.petfinder.com/v2/oauth2/token
+// curl -d "grant_type=client_credentials&client_id=ETHzj63pOADq1dtarMeN88FtVGQZsVkiqAH46NYLTdNLRjrDF8&client_secret=rrdIIFqWCHUtFCP8GDszZJQRdp7JSLTdKYfDDD0Y" https://api.petfinder.com/v2/oauth2/token
 
 
 function Pet(petApiData) {
