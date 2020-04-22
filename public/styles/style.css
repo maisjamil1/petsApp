@@ -137,8 +137,12 @@ height: 40vh;
     grid-template-columns: repeat(auto-fill , minmax(300px, 1fr));
     grid-gap: 100px;
     padding: 100px 100px;
+
+    
+    display: flex;
+    justify-content: center;
   } 
-  
+ 
   .ele {
     height: fit-content;
     align-items: center;
@@ -148,6 +152,15 @@ height: 40vh;
     padding-top: 3%;
     
   } 
+  h2{
+    font-size:1.5em;
+    text-align: center;
+    font-family: 'Pacifico', cursive;
+    color: #322d2d;;
+    position: relative;
+    top:-3em;
+    
+  }
   .ele img{
     border-radius: 10px ;
     border: 2px solid rgb(144, 144, 144);
@@ -336,3 +349,4 @@ height: 40vh;
     height: 40vh;
     background-attachment: fixed;
   }
+ 
