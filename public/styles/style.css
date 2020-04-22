@@ -69,6 +69,16 @@ header ul li:nth-child(1){
     margin-right: 5%;
 }
 
+header a{
+  transition: all 0.8sec ease;
+  text-decoration: none;
+  color: black;
+}
+
+header a:hover{
+  font-size: 110%;
+}
+
 header div{
     display: flex;
     height: 120vh;
@@ -87,6 +97,17 @@ header div{
     grid-template-rows: 100%;
     justify-content: center;
     align-items: center;
+}
+
+#searchFormDiv form label{
+  color: black;
+  font-weight: bold;
+  width: 42%;
+}
+
+#searchFormDiv form span{
+  color: black;
+  font-weight: bold;
 }
 
 #searchFormDiv input[type=text]{
@@ -117,7 +138,13 @@ header form input[type=submit]{
     height: 55px;
     width: 43%;
 }
-
+header form select{
+padding: 0px 33%;
+    border: 1px solid red;
+    color: black;
+    font-weight: bold;
+    width: 76%;
+}
 
 header span{
     color: rgb(204, 0, 0);;

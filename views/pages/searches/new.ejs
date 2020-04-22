@@ -14,8 +14,8 @@
         <nav>
             <img id="logo" src="../../public/images/logo.png" alt="">
             <ul>
-            <li><span>A</span>dopted <span>P</span>ets</li>
-            <li><span>A</span>bout <span>U</span>s</li>
+            <li><a href="/adoptedpets/"><span>A</span>dopted <span>P</span>ets</li>
+            <li><a href="/"><span>H</span>ome <span>P</span>age</a></li>
             </ul>
         </nav>
 
@@ -30,16 +30,16 @@
                         <option value="dog">Dogs</option>
                         <option value="rabbit">Rabbits</option>
                     </select>
+                    <label >
+                        <span>Male</span>
+                        <input type="radio" name="gender" value="male" id="cat">
+                        <label >
+                            <span>Female</span>
+                            <input type="radio" name="gender" value="female" id="dog" >
+                        </label>
+                    </label>
                 </label>
                 <br>
-                <label >
-                    <span>Male</span>
-                    <input type="radio" name="gender" value="male" id="cat">
-                </label>
-                <label >
-                    <span>Female</span>
-                    <input type="radio" name="gender" value="female" id="dog" >
-                </label>
                 <br>
                 <input class="myButton" type="submit" value="Find a Purrfect Match">    
             </form>
