@@ -19,5 +19,6 @@ DROP TABLE IF EXISTS pets;
  contact_email VARCHAR(255),
  contact_mobile VARCHAR(255),
  contact_city VARCHAR(255),
- contact_state VARCHAR(255)
+ contact_state VARCHAR(255),
+ pet_comments TEXT
  );

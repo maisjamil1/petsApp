@@ -3,9 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/reset.css">
+    <link href="https://fonts.googleapis.com/css2?family=Acme&family=Liu+Jian+Mao+Cao&family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/style.css">
     <title>Search Results</title>
 </head>
 <body>
+
+    <header>
+        <nav>
+            <img id="logo" src="../../public/images/logo.png" alt="">
+            <ul>
+            <li><span>A</span>dopted <span>P</span>ets</li>
+            <li><span>A</span>bout <span>U</span>s</li>
+            </ul>
+        </nav>
+
+        <div>
+            <h2>Find the Purrfect Match</h2>
+            <!-- <p>A New Best Friend Is Waiting For You</p> -->
+            <a href="/searches/new" class="myButton">Search</a>
+        </div>
+    </header>
+
     <% pets.forEach(pet => { %>
         <div>
             <img src="<%= pet.pet_image_url.medium %>" alt="<%= pet.pet_species %>">
