@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Adopt</title>
+    <link rel="stylesheet" href="/styles/reset.css">
+    <link href="https://fonts.googleapis.com/css2?family=Acme&family=Liu+Jian+Mao+Cao&family=Pacifico&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="/styles/style.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <img id="logo" src="../../public/images/logo.png" alt="">
+            <ul>
+                <li><a href="/searches/new"><span>S</span>earch</a></li>
+                <li><a href="/"><span>H</span>ome <span>P</span>age</a></li>
+            </ul>
+        </nav>
+
+        <div>
+            <h2>Your Adoption list:</h2>
+        </div>
+    </header>
+
+    <main>
+        <section id="gifcontainer">
+            <div id="imggif">
+            </div>
+        </section>
+
+
+        <section id="grid-elm">
+
+            <% pets.forEach(pet => { %>
+
+            <div class="ele card">
+
+                <img src="<%= pet.pet_image_url.medium %>" alt="<%= pet.pet_species %>">
+
+                <h3> <span>Name: </span><%= pet.pet_name %> </h3>
+                <hr>
+                <h4> <span>Type: </span><%= pet.pet_type %> </h4>
+                <hr>
+                <h4> <span>Breed: </span><%= pet.pet_breed %> </h4>
+                <hr>
+                <p> <span>Description: </span><%= pet.pet_description %> </p>
+                <hr>
+                <h4> <span>Gender: </span><%= pet.pet_gender %> </h4>
+                <hr>
+                <h4> <span>Age: </span><%= pet.pet_age %> </h4>
+                <hr>
+                <h4> <span>Contact Location: </span><%= pet.contact_city %> </h4>
+                <hr>
+                <h4> <span>Contact E-mail: </span><%= pet.contact_email %> </h4>
+                <hr>
+                <% if (!pet.contact_mobile) { %>
+                <h4> <span>Contact Mobile: </span> Not Provided </h4>
+                <hr>
+                <% } else{ %>
+                <h4> <span>Contact Mobile: </span><%= pet.contact_mobile %> </h4>
+                <hr>
+                <% }%>
+
+                <form action="/delete/<%=pet.pet_id%>?_method=DELETE" method="POST">
+                    <button type="submit" class="myButton">Remove Pet</button>
+                </form>
+            </div>
+            <% }) %>
+
+        </section>
+    </main>
+    <footer>
+        <h4>All Rights reserved.Le Petit © 2020 </h4>
+    </footer>
+
+</body>
+
+</html>

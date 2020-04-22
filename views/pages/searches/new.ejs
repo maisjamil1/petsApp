@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/reset.css">
+    <link href="https://fonts.googleapis.com/css2?family=Acme&family=Liu+Jian+Mao+Cao&family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/style.css">
+    <title>Search</title>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <img id="logo" src="../../public/images/logo.png" alt="">
+            <ul>
+            <li><a href="/adoptedpets/"><span>A</span>dopted <span>P</span>ets</li>
+            <li><a href="/"><span>H</span>ome <span>P</span>age</a></li>
+            </ul>
+        </nav>
+
+        <div id="searchFormDiv">
+            <form action="/searches/" method="POST">
+                <input type="text" name="location" id="keyword" placeholder="Enter a city" required>
+                <br>
+                <label >
+                    <span>Type</span>
+                    <select name="type" id="">
+                        <option value="cat">Cats</option>
+                        <option value="dog">Dogs</option>
+                        <option value="rabbit">Rabbits</option>
+                    </select>
+                    <label >
+                        <span>Male</span>
+                        <input type="radio" name="gender" value="male" id="cat">
+                        <label >
+                            <span>Female</span>
+                            <input type="radio" name="gender" value="female" id="dog" >
+                        </label>
+                    </label>
+                </label>
+                <br>
+                <br>
+                <input class="myButton" type="submit" value="Find a Purrfect Match">    
+            </form>
+        </div>
+    </header>
+    <main id="searchMain">
+        
+    </main>
+    
+    <!-- <form action="/searches/" method="POST">
+        <input type="text" name="location" id="keyword" placeholder="Enter a city" required>
+        <br>
+        <label >
+            <span>Type</span>
+            <select name="type" id="">
+                <option value="cat">Cats</option>
+                <option value="dog">Dogs</option>
+                <option value="rabbit">Rabbits</option>
+            </select>
+        </label>
+        <br>
+        <label >
+            <span>Male</span>
+            <input type="radio" name="gender" value="male" id="cat">
+        </label>
+        <label >
+            <span>Female</span>
+            <input type="radio" name="gender" value="female" id="dog" >
+        </label>
+        <br>
+        <input class="myButton" type="submit" value="Find a Purrfect Match">    
+    </form> -->
+</body>
+</html>
