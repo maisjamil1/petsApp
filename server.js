@@ -1,3 +1,6 @@
+
+// curl -d "grant_type=client_credentials&client_id=8CkHxCo6UyK3VArr3OYiNyjbgxIDxNnnTBtkeBlQUDukRHWL3M&client_secret=JL9oD2AbsQ1xfc2rNDcFaaAozGXbC6Fmv0yy6gXa" https://api.petfinder.com/v2/oauth2/token
+
 'use strict'
 
 require('dotenv').config();
@@ -42,6 +45,9 @@ app.post('/searches/', searchResults);
 app.get('/pets/:petID', showPetDetails);
 app.post('/pets/', addPetToAdopted);
 app.get('/adoptedpets/', showAdoptedPets);
+app.put('/addnote/:petID', addNoteToPet);
+app.delete('/delete/:petID', deletePet)
+
 
 
 /////////////// Tommalieh ///////////////////////////////////////////////////
@@ -130,7 +136,7 @@ function showPetDetails(req, res) {
                 .then(apiData => {
                     const petData = apiData.body.animal;
                     const createdPet = new Pet(petData);
-                    res.render('./pages//pets/show', { pet: createdPet })
+                    res.render('./pages/pets/show', { pet: createdPet })
                 })
                 .catch((err, req, res) => console.log(err))
         }
@@ -179,8 +185,6 @@ function addPetToAdopted(req, res) {
     })
 }
 
-///////////////////////////////////Thaer/////////////////////////////////////////
-
 
 function showAdoptedPets(req, res) {
     const SQL = 'SELECT * FROM pets '
@@ -194,6 +198,31 @@ function showAdoptedPets(req, res) {
 // curl -d "grant_type=client_credentials&client_id=PbkHNdhPyKoW8s9JiGkd8f7vZfG9yH4BWQAAkZRKMaOQWaOc4U&client_secret=gmlfVmD7NbdDRwCZ8pzjYok633tQ358DtDNo9EQw" https://api.petfinder.com/v2/oauth2/token
 
 /////////////// Tommalieh ///////////////////////////////////////////////////  
+
+
+function addNoteToPet(req, res){
+          // console.log(req.body);
+    // console.log(req.params.bookid)
+    const pet_comments = req.body.pet_comments;
+    // console.log (title, author, isbn, imageurl, description);
+    const SQL = 'UPDATE pets SET pet_comments=$2 WHERE pet_id=$1 RETURNING *'
+    const values = [req.params.petID, pet_comments];
+    client.query(SQL, values).then(result => {
+        console.log(result.rows[0])
+        res.redirect('/adoptedpets/')
+    })  
+}
+
+function deletePet(req, res){
+    const SQL = 'DELETE FROM pets WHERE pet_id = $1'
+    const value = [req.params.petID];
+    client.query(SQL, value).then(result => {
+        res.redirect('/adoptedpets/');
+    })
+}
+
+// curl -d "grant_type=client_credentials&client_id=ETHzj63pOADq1dtarMeN88FtVGQZsVkiqAH46NYLTdNLRjrDF8&client_secret=rrdIIFqWCHUtFCP8GDszZJQRdp7JSLTdKYfDDD0Y" https://api.petfinder.com/v2/oauth2/token
+
 
 function Pet(petApiData) {
     this.pet_id = petApiData.id;
@@ -213,6 +242,7 @@ function Pet(petApiData) {
     this.contact_mobile = petApiData.contact.phone;
     this.contact_city = petApiData.contact.address.city;
     this.contact_state = petApiData.contact.address.state;
+    this.pet_comments = '';
     console.log(this);
 }
 

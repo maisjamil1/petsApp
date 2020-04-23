@@ -1,0 +1,381 @@
+
+body{
+    background-image: url(../images/main.jpg);
+    background-attachment: fixed;
+}
+
+header{
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 10vh 60vh;
+    background-image: url(../images/Finalcover.jpg);
+    background-position: center;
+    background-size: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 70vh;
+    justify-content: center;
+    align-items: center;
+    font-family: sans-serif;
+    box-shadow: 0px 0px 10px white;
+    box-shadow: 0px 145px 165px white;
+}
+
+header nav{
+    display: grid;
+    height: 11vh;
+    background-color: rgba(220, 220, 220, 0.534);
+    background-color: white;
+    background-color: transparent;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 100%;
+    grid-template-areas: 'img ul';
+    justify-content: center;
+    align-items: center;
+    font-family: 'Liu Jian Mao Cao', cursive;
+    font-weight: bold;
+    font-size: inherit;
+    z-index: 9999;
+}
+
+header #logo{
+    grid-area: img;
+    width: 60%;
+    margin: 0 3%;
+    width: 18em;
+}
+
+header ul{
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 3%;
+    font-size: 2em;
+}
+
+header h2{
+    font-family: 'Pacifico', cursive;
+    color: #ff5c5c;
+    /* background-color: #ffffff52; */
+    width: fit-content;
+    border-radius: 10px;
+    font-size: 280%;
+    text-shadow: 1px 1px 2px black;
+    letter-spacing: 3px;
+}
+
+
+header ul li:nth-child(1){
+    margin-right: 5%;
+}
+
+header a{
+  transition: all 0.8sec ease;
+  text-decoration: none;
+  color: black;
+}
+
+header a:hover{
+  font-size: 110%;
+}
+
+header div{
+    display: flex;
+    height: 120vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+    margin-top: 13%;
+    background-color: #ffffff52;
+}
+
+#searchFormDiv{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+#searchFormDiv form label{
+  color: black;
+  font-weight: bold;
+  width: 42%;
+}
+
+#searchFormDiv form span{
+  color: black;
+  font-weight: bold;
+}
+
+#searchFormDiv input[type=text]{
+
+    border: none;
+    background-color: #ffffff80;
+    box-shadow: 0px 0px 8px #ffc8c8;
+    text-align: left;
+    width: 40%;
+    height: 39px;
+    padding: 0 1%;
+}
+
+header form {
+    width: 100%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+header form input[type=submit]{
+    margin: 0;
+    padding: 7% 20%;
+    position: inherit;
+    padding: inherit;
+    height: 55px;
+    width: 43%;
+}
+header form select{
+padding: 0px 33%;
+    border: 1px solid red;
+    color: black;
+    font-weight: bold;
+    width: 76%;
+}
+
+header span{
+    color: rgb(204, 0, 0);;
+}
+
+main{
+    box-shadow: 0px -145px 50px white;
+}
+
+#searchMain{
+    box-shadow: 0px -145px 50px white;
+height: 40vh;
+}
+
+#grid-elm {
+    display: grid;
+    grid-template-columns: repeat(auto-fill , minmax(300px, 1fr));
+    grid-gap: 100px;
+    padding: 100px 100px;
+    justify-content: center;
+  } 
+ 
+  .ele {
+    height: fit-content;
+    align-items: center;
+    position: relative;
+    margin: 5em auto;
+    box-shadow: 4px 4px 15px #322d2d;
+    padding-top: 3%;
+    
+  } 
+  h2{
+    font-size:1.5em;
+    text-align: center;
+    font-family: 'Pacifico', cursive;
+    color: #322d2d;;
+    position: relative;
+    top:-3em;
+    
+  }
+  .ele img{
+    border-radius: 10px ;
+    border: 2px solid rgb(144, 144, 144);
+    box-shadow: 0 2px 10px rgba(0,0,0,.2);
+    height: 270px;
+    width: inherit;
+    width: 300px;
+  }
+  
+  
+  
+  .card{
+    position: relative;
+    width: fit-content;
+    height: 350px;
+    height: fit-content;
+    height: 52vh;
+    background: #ffffff52;
+    margin: 0 auto;
+    border-radius: 4px;
+    box-shadow: 0 2px 10px rgba(0,0,0,.2);
+    box-shadow: 4px 4px 15px #322d2d;
+    text-align: center;
+    z-index: 9999;
+    height: fit-content;
+    font-family: 'Pacifico', cursive;
+    color: black;
+    
+  }
+
+  .card span{
+    color: #ff5c5c;
+  }
+
+  .card:before,
+  .card:after
+  {
+    content:"";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+    background: #fff;
+    background: #ffffff8f;
+    transition: 0.5s;
+    z-index:-1;
+  }
+
+  .card:hover{
+  /* background: #d3bebe8f; */
+  box-shadow: 0px 0px 5px black;
+  }
+
+  .card:hover span{
+    color: red;
+  }
+
+  .card:hover:before{
+  transform: rotate(20deg);
+  box-shadow: 0 2px 20px rgba(0,0,0,.2);
+  background: #bba1a18f;
+    background-color: #ff5c5c;
+  }
+  
+  .card:hover:after{
+  transform: rotate(10deg);
+  box-shadow: 0 2px 20px rgba(0,0,0,.2);
+  background: #d3bebe8f;
+  }
+  .card .imgBx{
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  bottom: 10px;
+  right: 10px;
+  background: #222;
+  transition: 0.5s;
+  z-index: 1;
+  }
+  
+  .card:hover img
+  {
+    bottom: 80px;
+  }
+  
+  .card .imgBx img{
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+  }
+  
+  .card h3{
+    margin: 0;
+    padding: 0;
+    margin: 3% auto;
+    font-weight: 600;
+    font-size: 175%;
+    color: #242626;
+    text-transform: uppercase;
+    padding: 2% 0;
+  }
+
+  .card h4{
+      font-size: 150%;
+      padding: 2% 0;
+  }
+
+  .card h4, .card p{
+    margin: 3% auto;
+  }
+
+  .card p{
+      height: 5vh;
+    /* overflow-y: scroll; */
+      width: 300px;
+      line-height: 30px;
+      padding: 1% 13px 31% 13px;
+      font-size: x-large;
+      
+  }
+
+  .card a, .card button{
+    margin-bottom: 5%;
+
+  }
+
+  .myButton{
+    box-shadow: 1px 2px 3px -1px black;
+    background-color:transparent;
+    background-color: #b7bbc705;
+    border-radius:28px;
+    border: 0;
+  display:inline-block;
+  cursor:pointer;
+    color: #000000;
+  font-family:Courier New;
+  font-size:19px;
+  font-weight:bold;
+  padding:14px 34px;
+    text-decoration:none;
+    transition: all 0.8s ease;
+    margin-top: 5%;
+    z-index: 1;
+  }
+
+  header .myButton{
+    background-color: rgb(192, 60, 62);
+    position: absolute;
+    color: white;
+    padding: 1% 5%;
+    margin-top: 40px;
+  }
+
+  /* header .myButton:active{
+    position: absolute;
+    top: 0;
+  } */
+  
+  .myButton:hover {
+    background-color:transparent;
+    background-color: rgb(155, 30, 30);
+    color: white;
+    transform: scale(1.1);
+  }
+  /* .myButton:active {
+  position: relative;;
+  top:1px;
+  }  */
+
+
+  #gifcontainer{
+    box-shadow: 0px 145px 50px white;
+    background: white;
+    margin-bottom: 10%;
+  }
+
+  #imggif{
+    background-image: url(/public/styles/source2.gif);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 40vh;
+    background-attachment: fixed;
+  }
+
+  #commentForm{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+ 
