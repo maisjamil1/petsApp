@@ -194,7 +194,8 @@ function showAdoptedPets(req, res) {
     })
 }
 
-///////////////////////////////////Thaer/////////////////////////////////////////
+
+// curl -d "grant_type=client_credentials&client_id=PbkHNdhPyKoW8s9JiGkd8f7vZfG9yH4BWQAAkZRKMaOQWaOc4U&client_secret=gmlfVmD7NbdDRwCZ8pzjYok633tQ358DtDNo9EQw" https://api.petfinder.com/v2/oauth2/token
 
 /////////////// Tommalieh ///////////////////////////////////////////////////  
 
