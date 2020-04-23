@@ -191,7 +191,7 @@ function showAdoptedPets(req, res) {
 }
 
 
-// curl -d "grant_type=client_credentials&client_id=ETHzj63pOADq1dtarMeN88FtVGQZsVkiqAH46NYLTdNLRjrDF8&client_secret=b0i0M466DoJHGvZRCok92uRmOxNwvXkOVa9wUJIj" https://api.petfinder.com/v2/oauth2/token
+// curl -d "grant_type=client_credentials&client_id=PbkHNdhPyKoW8s9JiGkd8f7vZfG9yH4BWQAAkZRKMaOQWaOc4U&client_secret=gmlfVmD7NbdDRwCZ8pzjYok633tQ358DtDNo9EQw" https://api.petfinder.com/v2/oauth2/token
 
 /////////////// Tommalieh ///////////////////////////////////////////////////  
 
