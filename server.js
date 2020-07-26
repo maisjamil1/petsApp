@@ -58,6 +58,7 @@ function homePage(req, res) {
     superagent.get(url).set({ 'Authorization': `Bearer ${process.env.PETFINDER_API_KEY}` })
         .then(apiData => {
             const pet = apiData.body.animals;
+            console.log(apiData.body)
             let pets = [];
             pet.forEach(petData => {
                 // console.log(petData.photos.length)
@@ -73,7 +74,7 @@ function homePage(req, res) {
             })
             // res.send(pets);
             // res.json(apiData.body); 
-            console.log(pets[0])
+            
             res.render('./pages/index' , { pets: pets })
         })
         .catch((err, req, res) => console.log(err))
@@ -91,7 +92,7 @@ function searchResults(req, res) {
     const url = `https://api.petfinder.com/v2/animals?location=${location}&type=${type}&gender=${gender ? gender : ''}`
     superagent.get(url).set({ 'Authorization': `Bearer ${process.env.PETFINDER_API_KEY}` })
         .then(apiData => {
-            console.log(apiData.body)
+            // console.log(apiData.body)
             const pet = apiData.body.animals;
             let pets = [];
             pet.forEach(petData => {
@@ -121,12 +122,12 @@ function searchResults(req, res) {
 
 function showPetDetails(req, res) {
     const petID = [req.params.petID];
-    console.log('petID', petID);
+    // console.log('petID', petID);
     const SQL = 'SELECT * FROM pets WHERE pet_id = $1';
     client.query(SQL, petID).then((petsDetails) => {
-        console.log(petsDetails);
+        // console.log(petsDetails);
         if (petsDetails.rows.length !== 0) {
-            console.log('fromDataBase');
+            // console.log('fromDataBase');
             res.render('./pages/pets/show', { pet: petsDetails.rows[0] })
         }
 
@@ -151,15 +152,15 @@ function showPetDetails(req, res) {
 
 function addPetToAdopted(req, res) {
     const petID = req.body.petID;
-    console.log(petID);
+    // console.log(petID);
     const SQL = 'SELECT * FROM pets WHERE pet_id = $1'
     client.query(SQL, [petID]).then(result => {
         if (result.rows.length !== 0) {
-            console.log('stored 2')
+            // console.log('stored 2')
             res.redirect(`/adoptedpets/`)
         }
         else {
-            console.log('not stored 2')
+            // console.log('not stored 2')
             const url = `https://api.petfinder.com/v2/animals/${petID}`;
             superagent.get(url).set({ 'Authorization': `Bearer ${process.env.PETFINDER_API_KEY}` })
                 .then(apiData => {
@@ -189,7 +190,7 @@ function addPetToAdopted(req, res) {
 function showAdoptedPets(req, res) {
     const SQL = 'SELECT * FROM pets '
     client.query(SQL).then(result => {
-        console.log('RESULT DATA', result.rows);
+        // console.log('RESULT DATA', result.rows);
         res.render('./pages/adopted/show', { pets: result.rows })
     })
 }
@@ -208,7 +209,7 @@ function addNoteToPet(req, res){
     const SQL = 'UPDATE pets SET pet_comments=$2 WHERE pet_id=$1 RETURNING *'
     const values = [req.params.petID, pet_comments];
     client.query(SQL, values).then(result => {
-        console.log(result.rows[0])
+        // console.log(result.rows[0])
         res.redirect('/adoptedpets/')
     })  
 }
